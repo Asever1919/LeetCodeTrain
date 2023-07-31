@@ -5,18 +5,25 @@ public class LC199 {
         int val;
         TreeNode left;
         TreeNode right;
-        TreeNode() {}
-        TreeNode(int val) { this.val = val; }
+
+        TreeNode() {
+        }
+
+        TreeNode(int val) {
+            this.val = val;
+        }
+
         TreeNode(int val, TreeNode left, TreeNode right) {
             this.val = val;
             this.left = left;
             this.right = right;
         }
     }
+
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> res = new ArrayList<>();
-        if (root == null) return res;
         Queue<TreeNode> que = new LinkedList<>();
+        if (root == null) return res;
         que.offer(root);
         while (!que.isEmpty()) {
             int size = que.size();

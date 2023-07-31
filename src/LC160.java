@@ -1,40 +1,42 @@
 public class LC160 {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        if (headA == null || headB == null)return null;
-        ListNode cur1 = headA;
+        if (headA == null || headB == null) return null;
         int lenA = 0;
-        ListNode cur2 = headB;
         int lenB = 0;
+        ListNode curA = headA;
+        ListNode curB = headB;
 
-        while (cur1 != null) {
+        while (curA != null) {
             lenA++;
-            cur1 = cur1.next;
+            curA = curA.next;
         }
-        while (cur2 != null) {
+        while (curB != null) {
             lenB++;
-            cur2 = cur2.next;
+            curB = curB.next;
         }
-        cur1 = headA;
-        cur2 = headB;
+        curA = headA;
+        curB = headB;
         if (lenB > lenA) {
-            int temp = lenA;
+            int templen = lenA;
             lenA = lenB;
-            lenB = temp;
+            lenB = templen;
 
-            ListNode tempCur = cur1;
-            cur1 = cur2;
-            cur2 = tempCur;
+            ListNode tempNode = curA;
+            curA = curB;
+            curB = tempNode;
         }
+
         int gap = lenA - lenB;
         while (gap-- > 0) {
-            cur1 = cur1.next;
+            curA = curA.next;
         }
-        while (cur1 != null) {
-            if (cur1 == cur2) {
-                return cur1;
+
+        while (curA != null) {
+            if (curA == curB) {
+                return curA;
             }
-            cur1 = cur1.next;
-            cur2 = cur2.next;
+            curA = curA.next;
+            curB = curB.next;
         }
         return null;
     }

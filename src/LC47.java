@@ -13,21 +13,26 @@ public class LC47 {
         int[] nums = {1, 1, 2};
         lc47.permuteUnique(nums);
     }
+
     public List<List<Integer>> permuteUnique(int[] nums) {
         Arrays.sort(nums);
         boolean[] used = new boolean[nums.length];
         backing(nums, used);
         return res;
     }
-    private void backing (int[] nums,boolean[] used) {
+
+    private void backing(int[] nums, boolean[] used) {
         if (path.size() == nums.length) {
             res.add(new ArrayList<>(path));
-            System.out.println(res);
             return;
         }
         for (int i = 0; i < nums.length; i++) {
-            if (i > 0 && nums[i - 1] == nums[i] && used[i - 1] == false) continue;
-            if (used[i] = true) continue;
+            if (i > 0 && nums[i] == nums[i - 1] && used[i - 1] == false) {
+                continue;
+            }
+            if (used[i] == true) {
+                continue;
+            }
             path.add(nums[i]);
             used[i] = true;
             backing(nums, used);

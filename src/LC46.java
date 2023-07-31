@@ -7,7 +7,7 @@ public class LC46 {
     List<Integer> path = new LinkedList<>();
 
     public List<List<Integer>> permute(int[] nums) {
-        if (nums.length == 0 || nums == null) return res;
+        if (nums == null || nums.length == 0) return res;
         boolean[] used = new boolean[nums.length];
         backtracing(nums, used);
         return res;
@@ -22,8 +22,8 @@ public class LC46 {
             path.add(nums[i]);
             used[i] = true;
             backtracing(nums, used);
-            path.remove(path.size() - 1);
             used[i] = false;
+            path.remove(path.size() - 1);
         }
     }
 }
